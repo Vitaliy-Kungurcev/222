@@ -1,31 +1,27 @@
 package tasks.ships;
 
-public class Berth extends Thread {
+public class Berth implements Runnable {
     private Product product;
-    QueueOfShips queueOfShips = new QueueOfShips();
+    private Tonnel tonnel;
 
-    public Berth(Product product) {
+    public Berth(Product product, Tonnel tonnel) {
         this.product = product;
+        this.tonnel = tonnel;
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                Ship ship = queueOfShips.giveTheShipFoLoading(this.product);
-                if (ship == null) {
-                    System.out.println("В тоннеле нет  корабля для " + product + ",ожидаем. " +
-                            "Список доступных кораблей: " + QueueOfShips.tunnel.toString());
-                    Thread.sleep(1000);
-                } else {
-                    QueueOfShips.tunnel.remove(ship);
-                    System.out.println("Из туннеля вышел: " + ship);
-                    System.out.println("Начинается погрузка на корабль " + ship);
+                System.out.println(Thread.currentThread().getName()+": Запрос в тоннель на корабль");
+                Ship ship = tonnel.giveTheShipFoLoading(this.product);
 
-                    Thread.sleep(ship.getSizeShip().size * 100);
+                System.out.println(Thread.currentThread().getName()+": Начинается погрузка на корабль" );
+                Thread.sleep(ship.getSizeShip().size * 200);
 
-                    System.out.println("Погрузка на " + ship + " окончена.");
-                }
+                System.out.println(Thread.currentThread().getName()+": Погрузка закончена");
+                System.out.println(Thread.currentThread().getName()+": Причал готов к работе.");
+                Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
