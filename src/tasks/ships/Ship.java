@@ -3,11 +3,11 @@ package tasks.ships;
 import java.util.List;
 
 public class Ship {
-    static final Ship shipFruits = new Ship(SizeShip.SHIP_FRUITS, Product.FRUITS);
-    static final Ship shipClothes = new Ship(SizeShip.SHIP_CLOTHES, Product.CLOTHES);
-    static final Ship shipCars = new Ship(SizeShip.SHIP_CARS, Product.CARS);
+    static final Ship SHIP_FRUITS = new Ship(SizeShip.FRUITS, Product.FRUITS);
+    static final Ship SHIP_CLOTHES = new Ship(SizeShip.CLOTHES, Product.CLOTHES);
+    static final Ship SHIP_CARS = new Ship(SizeShip.CARS, Product.CARS);
 
-    static List<Ship> listShip = List.of(shipCars, shipClothes, shipFruits);
+    static List<Ship> listShip = List.of(SHIP_CARS, SHIP_CLOTHES, SHIP_FRUITS);
 
     private SizeShip sizeShip;
     private Product typeProduct;

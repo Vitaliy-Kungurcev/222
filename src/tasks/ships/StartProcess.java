@@ -8,26 +8,26 @@ public class StartProcess {
         Berth berthClothes = new Berth(Product.CLOTHES, tonnel);
         Berth berthCars = new Berth(Product.CARS, tonnel);
 
-        Thread thread1 = new Thread(producerShips);
-        Thread thread2 = new Thread(berthFruits);
-        Thread thread3 = new Thread(berthClothes);
-        Thread thread4 = new Thread(berthCars);
+        Thread threadProducerShips = new Thread(producerShips);
+        Thread threadBerthFruits = new Thread(berthFruits);
+        Thread threadBerthClothes = new Thread(berthClothes);
+        Thread threadBerthCars = new Thread(berthCars);
 
-        thread1.setName("PRODUCER-Thread");
-        thread2.setName("FRUITS-Thread");
-        thread3.setName("CLOSES-Thread");
-        thread4.setName("CARS-Thread");
+        threadProducerShips.setName("PRODUCER-Thread");
+        threadBerthFruits.setName("FRUITS-Thread");
+        threadBerthClothes.setName("CLOSES-Thread");
+        threadBerthCars.setName("CARS-Thread");
 
-        thread1.start();
+        threadProducerShips.start();
         System.out.println("------Производитель кораблей начал работать-----");
-        thread1.join(16000);
-        thread2.start();
+        threadProducerShips.join(12000);
+        threadBerthFruits.start();
         System.out.println("------Причал с фруктами начал работу-----");
-        thread2.join(3000);
-        thread3.start();
+        threadBerthFruits.join(2000);
+        threadBerthClothes.start();
         System.out.println("------Причал с одеждой начал работу-----");
-        thread3.join(3000);
-        thread4.start();
+        threadBerthClothes.join(2000);
+        threadBerthCars.start();
         System.out.println("------Причал с автомобилями начал работу-----");
 
     }

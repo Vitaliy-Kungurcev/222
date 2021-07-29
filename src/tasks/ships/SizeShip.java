@@ -1,12 +1,15 @@
 package tasks.ships;
 
 public enum SizeShip {
-    SHIP_FRUITS(100),
-    SHIP_CLOTHES(50),
-    SHIP_CARS(30);
+    FRUITS(100),
+    CLOTHES(50),
+    CARS(30);
 
+    public int getSize() {
+        return size;
+    }
 
-    public final int size;
+    private final int size;
 
     SizeShip(int size) {
         this.size = size;
